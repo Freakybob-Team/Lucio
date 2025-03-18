@@ -97,7 +97,7 @@ class Polygon:
         self.update_box()
         self.col = col
         self.imm = imm
-        if imm: self.m = float('inf')
+        if imm: self.m = float('inf'); self.I *= 2
         if imm == 2: self.I = float('inf')
     def get_a(self):
         x = self.pts[:,0]
