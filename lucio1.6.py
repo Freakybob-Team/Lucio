@@ -141,7 +141,7 @@ class Polygon:
         y = self.pts[:,1] + self.pos[1]
         self.le, self.ri = np.min(x), np.max(x)
         self.to, self.bo = np.min(y), np.max(y)
-    def update(self, dt, g=np.array([0, 200]), dmp=0.999):
+    def update(self, dt, g=np.array([0, 1000]), dmp=0.99999):
         if not self.imm:
             self.v += (self.f / self.m + g) * dt
             self.v *= 1 - dmp * dt
