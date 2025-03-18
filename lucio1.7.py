@@ -39,11 +39,11 @@ def collision(p1, p2, e=0.6, fr=0.4):
                     bnormal = normal
         direction = 1 if np.dot(p2.pos - p1.pos, bnormal) > 0 else -1
         mtv = bnormal * moverlap * direction
-        if p1.imm and not p2.imm: p2.dpos += mtv
-        elif p2.imm and not p1.imm: p1.dpos -= mtv
+        if p1.imm and not p2.imm: p2.pos += mtv
+        elif p2.imm and not p1.imm: p1.pos -= mtv
         else:
-            p1.dpos -= mtv / 2
-            p2.dpos += mtv / 2
+            p1.pos -= mtv / 2
+            p2.pos += mtv / 2
         cpoints = []
         for i in range(p1.n):
             for j in range(p2.n):
@@ -92,7 +92,6 @@ class Polygon:
         self.a = self.m / self.d
         self.v = np.zeros(2)
         self.f = np.zeros(2)
-        self.dpos = np.zeros(2)
         self.I, self.w = self.get_I(), 0.0
         self.update_box()
         self.col = col
@@ -136,9 +135,6 @@ class Polygon:
         y = self.pts[:,1] + self.pos[1]
         self.le, self.ri = np.min(x), np.max(x)
         self.to, self.bo = np.min(y), np.max(y)
-    def update_dpos(self):
-        self.pos += self.dpos
-        self.dpos = np.zeros(2)
     def update(self, dt, dmp=0.999999):
         if not self.imm:
             self.v += self.f / self.m * dt
@@ -173,7 +169,6 @@ class Engine:
         for i in range(len(self.polygons)):
             for j in range(i + 1, len(self.polygons)):
                 collision(self.polygons[i], self.polygons[j])
-        for p in self.polygons: p.update_dpos()
         self.surface.fill((50, 0, 50))
         for p in self.polygons: p.draw(self.surface)
         pg.display.flip()
