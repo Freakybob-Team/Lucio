@@ -1,2 +1,3 @@
 очень круто
 pyinstaller --onefile main.py
+half code stolen from internet :P
