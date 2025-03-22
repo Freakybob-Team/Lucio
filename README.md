@@ -3,3 +3,6 @@ just my epic ocd playing with 2d shapes learning arc, planning it to be a melon 
 
 ## FreakDoom
 also here be freak doom pretty cool
+
+## FreakCraft
+its cube game but freak
