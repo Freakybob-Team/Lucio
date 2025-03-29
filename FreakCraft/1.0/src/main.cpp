@@ -290,7 +290,7 @@ int main() {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    GLFWwindow *window = glfwCreateWindow(screenwidth, screenheight, "luxykraft1.0", NULL, NULL);
+    GLFWwindow *window = glfwCreateWindow(screenwidth, screenheight, "freakcraft1.0", NULL, NULL);
     glfwMakeContextCurrent(window);
     glfwSetCursorPos(window, screenwidth / 2.0f, screenheight / 2.0f);
     glfwSetFramebufferSizeCallback(window, framebuffersizecallback);
